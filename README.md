@@ -94,7 +94,9 @@ stateDiagram-v2
     Completed --> [*]
 
 ## API Reference
-# MongoDBMessageQueue
+``` python
+MongoDBMessageQueue
+```
 | Method | Description |
 | -------- | -------- |
 | publish_message(channel, payload)	 | Publish message to channel |
@@ -105,17 +107,17 @@ stateDiagram-v2
 | close()		 | Clean up resources |
 
 ## Performance Tips
-# 1. Batch Publishing: Group messages when possible
-# 2. Optimal Visibility Timeout: Set based on your processing time
-# 3. Monitor Statistics: Watch for channel backlogs
-# 4. Proper Indexing: Already handled by the implementation
+1. Batch Publishing: Group messages when possible
+2. Optimal Visibility Timeout: Set based on your processing time
+3. Monitor Statistics: Watch for channel backlogs
+4. Proper Indexing: Already handled by the implementation
 
 ## Contributing
-# 1. Fork the repository
-# 2. Create your feature branch
-# 3. Commit your changes
-# 4. Push to the branch
-# 5. Create a new Pull Request
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
 
 ## License
-# MIT License - See LICENSE for details.
+MIT License - See LICENSE for details.
