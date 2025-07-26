@@ -144,6 +144,7 @@ MIT License - See LICENSE for details.
 | **Read Preference**    | Configure secondary reads for stats/queries       | Reduce load on primary                |
 
 3. Reliability Enhancements
+
 | Feature | Description | Benefit |
 | -------- | -------- |-------- |
 | **Dead Letter Queue** | Auto-move failed messages to `_dlq` channel | Debug failed messages |
@@ -152,6 +153,7 @@ MIT License - See LICENSE for details.
 | **Exactly-Once Delivery** | Add `idempotency_key` to messages | Prevent duplicate processing |
 
 4. Monitoring & Observability
+
 | Feature | Description | Benefit |
 | -------- | -------- |-------- |
 | **Prometheus Metrics** | Track queue depth, processing time, errors | Real-time monitoring |
@@ -160,6 +162,7 @@ MIT License - See LICENSE for details.
 | **Slow Query Logging** | Log queries >100ms | Performance optimization |
 
 5. Advanced Consumer Patterns
+
 | Feature | Description | Benefit |
 | -------- | -------- |-------- |
 | **Competing Consumers**| Auto-balancing worker pool | Horizontal scaling |
@@ -168,6 +171,7 @@ MIT License - See LICENSE for details.
 | **Delayed Retries**   | Exponential backoff for failed messages | Error handling |
 
 6. Security Features
+
 | Feature | Description | Benefit |
 | -------- | -------- |-------- |
 | **Channel ACLs** | RBAC per channel | Multi-tenant security |
