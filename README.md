@@ -135,10 +135,11 @@ MIT License - See LICENSE for details.
 | Message Expiration | Add ```ttl_seconds``` field with server-side TTL index	| Auto-expire stale messages |
 
 2. Scalability Improvements
+
 | Feature | Description | Benefit |
 | -------- | -------- |-------- |
-| **Sharding**           | Shard collections by `channel`                   | Horizontal scaling for high throughput |
-| **Batched Operations** | Add `bulk_publish()` and `bulk_complete()` methods | Reduce network roundtrips             |
+| **Sharding** | Shard collections by `channel` | Horizontal scaling for high throughput |
+| **Batched Operations** | Add `bulk_publish()` and `bulk_complete()` methods | Reduce network roundtrips |
 | **Cursor-based Pagination** | Implement `get_messages(limit=100, last_id=None)` | Efficient bulk message retrieval      |
 | **Read Preference**    | Configure secondary reads for stats/queries       | Reduce load on primary                |
 
