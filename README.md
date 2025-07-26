@@ -146,31 +146,31 @@ MIT License - See LICENSE for details.
 3. Reliability Enhancements
 | Feature | Description | Benefit |
 | -------- | -------- |-------- |
-| **Dead Letter Queue**       | Auto-move failed messages to `_dlq` channel      | Debug failed messages                 |
-| **Poison Pill Detection**   | Track processing time, auto-fail slow messages   | Prevent consumer stalls               |
-| **Transactional Operations**| Use MongoDB multi-document transactions          | Atomic multi-message ops              |
-| **Exactly-Once Delivery**   | Add `idempotency_key` to messages                | Prevent duplicate processing          |
+| **Dead Letter Queue** | Auto-move failed messages to `_dlq` channel | Debug failed messages |
+| **Poison Pill Detection** | Track processing time, auto-fail slow messages | Prevent consumer stalls |
+| **Transactional Operations** | Use MongoDB multi-document transactions | Atomic multi-message ops |
+| **Exactly-Once Delivery** | Add `idempotency_key` to messages | Prevent duplicate processing |
 
 4. Monitoring & Observability
 | Feature | Description | Benefit |
 | -------- | -------- |-------- |
-| **Prometheus Metrics** | Track queue depth, processing time, errors       | Real-time monitoring                  |
-| **Admin API**          | Add REST endpoints for queue management          | Operational control                   |
-| **Message Tracing**    | Add `trace_id` using OpenTelemetry               | Distributed tracing                   |
-| **Slow Query Logging** | Log queries >100ms                               | Performance optimization              |
+| **Prometheus Metrics** | Track queue depth, processing time, errors | Real-time monitoring |
+| **Admin API** | Add REST endpoints for queue management | Operational control |
+| **Message Tracing** | Add `trace_id` using OpenTelemetry | Distributed tracing |
+| **Slow Query Logging** | Log queries >100ms | Performance optimization |
 
 5. Advanced Consumer Patterns
 | Feature | Description | Benefit |
 | -------- | -------- |-------- |
-| **Competing Consumers**| Auto-balancing worker pool                       | Horizontal scaling                    |
-| **Pub/Sub**           | Multiple consumers per channel                   | Fan-out messaging                     |
-| **Backpressure**      | Dynamic `get_message()` timeout based on queue depth | Auto-throttling                  |
-| **Delayed Retries**   | Exponential backoff for failed messages          | Error handling                        |
+| **Competing Consumers**| Auto-balancing worker pool | Horizontal scaling |
+| **Pub/Sub** | Multiple consumers per channel | Fan-out messaging |
+| **Backpressure** | Dynamic `get_message()` timeout based on queue depth | Auto-throttling |
+| **Delayed Retries**   | Exponential backoff for failed messages | Error handling |
 
 6. Security Features
 | Feature | Description | Benefit |
 | -------- | -------- |-------- |
-| **Channel ACLs**       | RBAC per channel                                 | Multi-tenant security                 |
-| **Message Encryption** | Field-level encryption                           | Sensitive data protection             |
-| **Audit Logging**      | Log all queue operations                         | Compliance                            |
-| **JWT Validation**     | Verify producer/consumer tokens                  | Authentication                        |
+| **Channel ACLs** | RBAC per channel | Multi-tenant security |
+| **Message Encryption** | Field-level encryption | Sensitive data protection |
+| **Audit Logging** | Log all queue operations | Compliance |
+| **JWT Validation** | Verify producer/consumer tokens | Authentication |
