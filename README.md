@@ -84,7 +84,7 @@ for i in range(5):
     Thread(target=worker, args=(f"worker_{i}",)).start()
 ```
 ## Message Lifecycle
-```code
+```mermaid
 stateDiagram-v2
     [*] --> Pending
     Pending --> Processing: get_message()
