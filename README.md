@@ -124,7 +124,7 @@ MongoDBMessageQueue
 ## License
 MIT License - See LICENSE for details.
 
-## Roadmap
+## Future TO DO Implementations (Probable)
 1. Enhanced Message Features
 
 | Feature | Description | Benefit |
@@ -133,3 +133,43 @@ MIT License - See LICENSE for details.
 | Scheduled Messages | Implement ```deliver_after``` timestamp field with TTL index	 | Future-dated message delivery |
 | Message Groups | Add ```group_id``` to sequence messages within logical groups | Ordered processing of related messages |
 | Message Expiration | Add ```ttl_seconds``` field with server-side TTL index	| Auto-expire stale messages |
+
+2. Scalability Improvements
+| Feature                | Description                                      | Benefit                                |
+|------------------------|--------------------------------------------------|----------------------------------------|
+| **Sharding**           | Shard collections by `channel`                   | Horizontal scaling for high throughput |
+| **Batched Operations** | Add `bulk_publish()` and `bulk_complete()` methods | Reduce network roundtrips             |
+| **Cursor-based Pagination** | Implement `get_messages(limit=100, last_id=None)` | Efficient bulk message retrieval      |
+| **Read Preference**    | Configure secondary reads for stats/queries       | Reduce load on primary                |
+
+3. Reliability Enhancements
+| Feature                     | Description                                      | Benefit                                |
+|-----------------------------|--------------------------------------------------|----------------------------------------|
+| **Dead Letter Queue**       | Auto-move failed messages to `_dlq` channel      | Debug failed messages                 |
+| **Poison Pill Detection**   | Track processing time, auto-fail slow messages   | Prevent consumer stalls               |
+| **Transactional Operations**| Use MongoDB multi-document transactions          | Atomic multi-message ops              |
+| **Exactly-Once Delivery**   | Add `idempotency_key` to messages                | Prevent duplicate processing          |
+
+4. Monitoring & Observability
+| Feature                | Description                                      | Benefit                                |
+|------------------------|--------------------------------------------------|----------------------------------------|
+| **Prometheus Metrics** | Track queue depth, processing time, errors       | Real-time monitoring                  |
+| **Admin API**          | Add REST endpoints for queue management          | Operational control                   |
+| **Message Tracing**    | Add `trace_id` using OpenTelemetry               | Distributed tracing                   |
+| **Slow Query Logging** | Log queries >100ms                               | Performance optimization              |
+
+5. Advanced Consumer Patterns
+| Feature                | Description                                      | Benefit                                |
+|------------------------|--------------------------------------------------|----------------------------------------|
+| **Competing Consumers**| Auto-balancing worker pool                       | Horizontal scaling                    |
+| **Pub/Sub**           | Multiple consumers per channel                   | Fan-out messaging                     |
+| **Backpressure**      | Dynamic `get_message()` timeout based on queue depth | Auto-throttling                  |
+| **Delayed Retries**   | Exponential backoff for failed messages          | Error handling                        |
+
+6. Security Features
+| Feature                | Description                                      | Benefit                                |
+|------------------------|--------------------------------------------------|----------------------------------------|
+| **Channel ACLs**       | RBAC per channel                                 | Multi-tenant security                 |
+| **Message Encryption** | Field-level encryption                           | Sensitive data protection             |
+| **Audit Logging**      | Log all queue operations                         | Compliance                            |
+| **JWT Validation**     | Verify producer/consumer tokens                  | Authentication                        |
