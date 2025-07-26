@@ -20,3 +20,102 @@ A robust, production-ready message queue/service bus implementation using MongoD
 
 ```bash
 pip install pymongo python-dotenv
+```
+## Configuration
+```python
+# MongoDB Connection
+MONGO_URI=mongodb://localhost:27017
+MONGO_DB_NAME=message_queue_db
+
+# TLS/SSL (Optional)
+# MONGO_TLS=true
+# MONGO_CA_FILE=/path/to/ca.pem
+
+# Queue Settings
+MQ_MAX_RETRIES=3
+MQ_RETRY_DELAY=1.0
+MQ_VISIBILITY_TIMEOUT=300
+MQ_HEARTBEAT_INTERVAL=30
+MQ_MAX_ATTEMPTS=3
+MQ_RETENTION_DAYS=7
+```
+
+## Basic Usage
+```python
+from mongodb_message_queue import MongoDBMessageQueue
+
+# Initialize queue
+with MongoDBMessageQueue() as queue:
+    # Producer
+    message_id = queue.publish_message("orders", {"order_id": 1001})
+    
+    # Consumer
+    message = queue.get_message("orders", "worker_1")
+    if message:
+        try:
+            process_message(message['payload'])
+            queue.complete_message(message['_id'], "worker_1")
+        except Exception:
+            queue.fail_message(message['_id'], "worker_1")
+    
+    # Get stats
+    stats = queue.get_channel_stats("orders")
+    print(f"Pending messages: {stats['pending']}")
+```
+### Advanced Usage
+Multi-worker Processing
+```python
+from threading import Thread
+from mongodb_message_queue import MongoDBMessageQueue
+
+def worker(worker_id):
+    with MongoDBMessageQueue() as queue:
+        while True:
+            message = queue.get_message("jobs", worker_id, timeout=10)
+            if message:
+                try:
+                    process_job(message['payload'])
+                    queue.complete_message(message['_id'], worker_id)
+                except Exception:
+                    queue.fail_message(message['_id'], worker_id)
+
+# Start 5 workers
+for i in range(5):
+    Thread(target=worker, args=(f"worker_{i}",)).start()
+```
+## Message Lifecycle
+stateDiagram-v2
+    [*] --> Pending
+    Pending --> Processing: get_message()
+    Processing --> Completed: complete_message()
+    Processing --> Failed: fail_message()
+    Failed --> Pending: if attempts < max
+    Failed --> [*]: if attempts >= max
+    Completed --> [*]
+
+## API Reference
+# MongoDBMessageQueue
+| Method | Description |
+| -------- | -------- |
+| publish_message(channel, payload)	 | Publish message to channel |
+| get_message(channel, consumer_id)	 | Get next message (returns None if empty) |
+| complete_message(message_id, consumer_id)	 | Mark message as completed |
+| fail_message(message_id, consumer_id)	 | Mark message as failed |
+| get_channel_stats(channel)	 | Returns message counts by status |
+| close()		 | Clean up resources |
+
+## Performance Tips
+# 1. Batch Publishing: Group messages when possible
+# 2. Optimal Visibility Timeout: Set based on your processing time
+# 3. Monitor Statistics: Watch for channel backlogs
+# 4. Proper Indexing: Already handled by the implementation
+
+## Contributing
+# 1. Fork the repository
+# 2. Create your feature branch
+# 3. Commit your changes
+# 4. Push to the branch
+# 5. Create a new Pull Request
+
+## License
+# MIT License - See LICENSE for details.
