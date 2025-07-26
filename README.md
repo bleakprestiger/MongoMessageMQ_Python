@@ -84,6 +84,7 @@ for i in range(5):
     Thread(target=worker, args=(f"worker_{i}",)).start()
 ```
 ## Message Lifecycle
+```code
 stateDiagram-v2
     [*] --> Pending
     Pending --> Processing: get_message()
@@ -92,6 +93,7 @@ stateDiagram-v2
     Failed --> Pending: if attempts < max
     Failed --> [*]: if attempts >= max
     Completed --> [*]
+```
 
 ## API Reference
 ``` python
