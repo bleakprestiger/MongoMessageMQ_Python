@@ -1,0 +1,12 @@
+Metadata-Version: 2.2
+Name: MongoMessageMQ_Python
+Version: 0.1.1
+Summary: Message Queue Implementation in MongoDB.
+Author: Bleak Prestiger
+Author-email: bleakprestiger435@gmail.com
+Dynamic: author
+Dynamic: author-email
+Dynamic: description
+Dynamic: summary
+
+A robust, production-ready message queue/service bus implementation using MongoDB as the backing store.

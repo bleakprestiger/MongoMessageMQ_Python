@@ -1,0 +1,6 @@
+README.md
+setup.py
+MongoMessageMQ_Python.egg-info/PKG-INFO
+MongoMessageMQ_Python.egg-info/SOURCES.txt
+MongoMessageMQ_Python.egg-info/dependency_links.txt
+MongoMessageMQ_Python.egg-info/top_level.txt
