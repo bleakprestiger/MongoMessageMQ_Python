@@ -129,10 +129,10 @@ MIT License - See LICENSE for details.
 
 | Feature | Description | Benefit |
 | -------- | -------- |-------- |
-| Priority Queues | Add ```priority``` field to messages (0-9) with compound index on (```channel```, ```priority```, ```sequence_number```) | Handle high-priority messages first |
-| Scheduled Messages | Implement ```deliver_after``` timestamp field with TTL index	 | Future-dated message delivery |
-| Message Groups | Add ```group_id``` to sequence messages within logical groups | Ordered processing of related messages |
-| Message Expiration | Add ```ttl_seconds``` field with server-side TTL index	| Auto-expire stale messages |
+| **Priority Queues** | Add ```priority``` field to messages (0-9) with compound index on (```channel```, ```priority```, ```sequence_number```) | Handle high-priority messages first |
+| **Scheduled Messages** | Implement ```deliver_after``` timestamp field with TTL index	 | Future-dated message delivery |
+| **Message Groups** | Add ```group_id``` to sequence messages within logical groups | Ordered processing of related messages |
+| **Message Expiration** | Add ```ttl_seconds``` field with server-side TTL index	| Auto-expire stale messages |
 
 2. Scalability Improvements
 
